@@ -1,19 +1,13 @@
-::--------------------------------------------------
-:: Modifies on : 01-01-2023
+::-------------------------------------------------------------------------------------------
+:: Modifies on : 05-01-2023
 :: By Meir.e
 :: Menu in batch.
 ::
-::--------------------------------------------------
-:: Run once , can run inly in batch file , Global
-::--------------------------------------------------
+::-----------------Run once , can run inly in batch file , Global----------------------------
 @ECHO OFF & @SET ME=IR & TITLE Mei-R:MAN
-::--------------------------------------------------
-:: Run once , can run inly in batch file , Global
-::--------------------------------------------------
-::-------------------------------------------------------------------------------------------
+::-------------------------------Main--------------------------------------------------------
 :Main
-CLS
-call :Print_Logo
+CLS & call :Print_Logo
 :Menu &REM Menu here
 :: Print Menu here
 FOR /f "skip=2 tokens=1-2 delims=|" %%a IN ('"findstr /R /C:":OPT" %0"') do (echo ^> %%b)
@@ -24,33 +18,8 @@ CALL :OPT%M% &REM replace here the IF %M%==1 GOTO OPT1 ...statements....
 GOTO :Main
 GOTO :EOF
 PAUSE
-::-------------------------------------------------------------------------------------------
-:: -----------------------------------------------------------------
-:: Functions here
-:: -----------------------------------------------------------------
-:Print_Logo
-echo ----------------------------------------------------------------------
-echo "       @@@@        @@@.               #@*          @@@@@@@@@@@@     "        
-echo "       @@*@(      @&#@.      @@@                   @@.        @@    "        
-echo "       @@ (@.    @@ #@.   @@    .@@   #@*          @@.       @@/    "        
-echo "       @@  @@   @@  #@.  @@@@@@@@@@@  #@*          @@@@@@@@@/       "        
-echo "       @@   @@ (@   #@.  @@           #@*          @@.     *@@.     "        
-echo "       @@    @@@,   #@.  .@@,   .@@*  #@*          @@.       &@@    "        
-echo "                             /#(.                                   "
-echo ----------------------------------------------------------------------
-EXIT /B 0
-::-------------------------------------------------------------------------------------// Color Function
-:ConsolePrintColor <hexColorCode> <str>
-	setlocal
-	::need run once
-	for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%m in (1) do rem"') do (set "BS_Char=%%a" ) & echo off &REM Generate the BS Character Method.
-	call :ConsolePrint %BS_Char% > "%~2" &REM moves BS character
-	findstr /v /a:%1 /R "^$" "%~2" nul
-	del "%~2" > nul 2>&1i
-	endlocal
-	EXIT /B 0
-::-------------------------------------------------------------------------------------
-:ConsolePrint <> <>
+::------------------------------------Functions-----------------------------------------
+:ConsolePrint <>
 	setlocal
 	<nul set /p "=%~1"
 	endlocal
@@ -62,8 +31,28 @@ EXIT /B 0
 	endlocal & set result=%result% & set %~1=%result%
 EXIT /B 0
 :PrintMenu
-
+ :: TBD
 EXIT /B 0
+:ConsolePrintColor <hexColorCode> <str>
+	setlocal
+	::need run once
+	for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%m in (1) do rem"') do (set "BS_Char=%%a" ) & echo off &REM Generate the BS Character Method.
+	call :ConsolePrint %BS_Char% > "%~2" &REM moves BS character
+	findstr /v /a:%1 /R "^$" "%~2" nul
+	del "%~2" > nul 2>&1i
+	endlocal
+	EXIT /B 0
+:Print_Logo
+	echo -----------------------------------------------------------
+	echo "       @@@@        @@@.      @@@       #@*     @*      "      
+	echo "       @@*@(      @&#@.     @@@@@      #@@     @#      "      
+	echo "       @@ (@.    @@ #@.    @@   @@     #@*@    @#      "      
+	echo "       @@  @@   @@  #@.   @@=====@@    #@* @   @#      "      
+	echo "       @@   @@ (@   #@.  @@       @@   #@*  @ @@#      "      
+	echo "       @@    @@@,   #@. @@         @@  #@     @@#      "
+	echo ----------------------------------------------------------
+EXIT /B 0
+::------------------------------------Options----------------------------------------
 :OPTW | W - write here something
 echo test 123 123 123
 pause
@@ -76,3 +65,4 @@ EXIT /B 0
 echo test 123 123 123
 	exit
 EXIT /B 0
+::------------------------------------END-------------------------------------------
