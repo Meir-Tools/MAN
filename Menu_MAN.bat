@@ -6,15 +6,15 @@
 ::-----------------Run once , can run inly in batch file , Global----------------------------
 @ECHO OFF & @SET ME=IR & TITLE Mei-R:MAN
 ::-------------------------------Main--------------------------------------------------------
-:Main
-CLS & call :Print_Logo
-:Menu &REM Menu here
-:: Print Menu here
-FOR /f "skip=2 tokens=1-2 delims=|" %%a IN ('"findstr /R /C:":OPT" %0"') do (echo ^> %%b)
-call :ConsolePrint "test for printing: " & echo.
-CALL :ConsolePrint "Type 1, 2, 3, or 4 then press ENTER: " & echo. & CALL :GetChar M &REM Option 2 
-CALL :OPT%M% &REM replace here the IF %M%==1 GOTO OPT1 ...statements....
-
+:Main <> 
+	CLS & call :Print_Logo
+	:Menu &REM Menu here
+	:: Print Menu here
+	FOR /f "skip=2 tokens=1-2 delims=|" %%a IN ('"findstr /R /C:":OPT" %0"') do (echo ^> %%b)
+	call :ConsolePrint "test for printing: " & echo.
+	CALL :ConsolePrint "Type 1, 2, 3, or 4 then press ENTER: " & echo. & CALL :GetChar M &REM Option 2 
+	CALL :OPT%M% &REM replace here the IF %M%==1 GOTO OPT1 ...statements....
+	
 GOTO :Main
 GOTO :EOF
 PAUSE
@@ -54,15 +54,15 @@ EXIT /B 0
 EXIT /B 0
 ::------------------------------------Options----------------------------------------
 :OPTW | W - write here something
-echo test 123 123 123
-pause
+	echo test 123 123 123
+	pause
 EXIT /B 0
 :OPTS | S - write here something
-echo test 123 123 123
-pause
+	echo test 123 123 123
+	pause
 EXIT /B 0
 :OPTQ | Q - exit
-echo test 123 123 123
+	echo test 123 123 123
 	exit
 EXIT /B 0
 ::------------------------------------END-------------------------------------------
