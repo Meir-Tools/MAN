@@ -22,6 +22,7 @@ CALL :ConsolePrint "Type 1, 2, 3, or 4 then press ENTER: " & echo. & CALL :GetCh
 CALL :OPT%M% &REM replace here the IF %M%==1 GOTO OPT1 ...statements....
 
 GOTO :Main
+GOTO :EOF
 PAUSE
 ::-------------------------------------------------------------------------------------------
 :: -----------------------------------------------------------------

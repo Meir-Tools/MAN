@@ -6,7 +6,7 @@
 ::--------------------------------------------------
 :: Run once , can run inly in batch file , Global
 ::--------------------------------------------------
-@ECHO OFF & TITLE Mei-R
+@ECHO OFF & @SET ME=IR & TITLE Mei-R:MAN
 ::--------------------------------------------------
 :: Run once , can run inly in batch file , Global
 ::--------------------------------------------------
