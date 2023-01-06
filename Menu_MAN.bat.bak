@@ -2,7 +2,6 @@
 :: Modifies on : 05-01-2023
 :: By Meir.e
 :: Menu in batch.
-:: REF|https://github.com/Meir-E/MAN/blob/main/Menu_MAN.bat
 ::
 ::-----------------Run once , can run inly in batch file , Global----------------------------
 @ECHO OFF & @SET ME=IR & TITLE Mei-R:MAN
