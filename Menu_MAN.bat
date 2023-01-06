@@ -27,12 +27,18 @@ EXIT /B 0
 	for /F "tokens=1 delims=," %%a in ('"choice /N /C 0123456789abcdefghijklmnopqrstuvwxyz"') do (set "result=%%a")
 	endlocal & set result=%result% & set %~1=%result%
 EXIT /B 0
+:GetCharRefresh <res>
+	setlocal
+	:: 0123456789abcdefghijklmnopqrstuvwxyz , can change here what char are available,Mei-R
+	for /F "tokens=1 delims=," %%a in ('"choice /D T /T 2 /N /C 0123456789abcdefghijklmnopqrstuvwxyz"') do (set "result=%%a")
+	endlocal & set result=%result% & set %~1=%result%
+EXIT /B 0
 :ShowMenu <file_path>	
 	:Menu &REM Menu here
 	:: Print Menu here
 	FOR /f "skip=2 tokens=1-2 delims=|" %%a IN ('"findstr /R /C:":OPT" %1"') do (echo ^> %%b)
 	call :ConsolePrint "test for printing: " & echo.
-	CALL :ConsolePrint "Type 1, 2, 3, or 4 then press ENTER: " & echo. & CALL :GetChar M &REM Option 2 
+	CALL :ConsolePrint "Type 1, 2, 3, or 4 then press ENTER: " & echo. & CALL :GetCharRefresh M &REM 
 	CALL :OPT%M% &REM replace here the IF %M%==1 GOTO OPT1 ...statements....
 EXIT /B 0
 :ConsolePrintColor <hexColorCode> <str>
