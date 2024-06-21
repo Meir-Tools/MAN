@@ -9,6 +9,7 @@
 	ren %1 *.blk
 EXIT /B 0 
 :MyLabel 	:: TBD | need add alert notification for empty arguments
+	call %BATman% :MAN_Print_Logo
 	echo Drag and Drop on me
 	CALL %BATman% :MAN_ShowMenu %0
 	CALL :OPT%M% &REM replace here the IF %M%==1 GOTO OPT1 ...statements....
