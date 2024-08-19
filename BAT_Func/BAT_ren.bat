@@ -1,5 +1,6 @@
 ::-----------------------------------------------------------------------------
 :: Creator Meir-Tools_2024 , Note by date 2024 , ref xxxx_xx_xx_notes
+:: BAT_ren | Need add that this tool / file do .
 ::-----------------------------------------------------------------------------
 @ECHO OFF & TITLE Meir-Tools_2024 &set BATman=%USERPROFILE%\Documents\GitHub\Functions\BATman
 ::---------------------------------- Main--------------------------------------
